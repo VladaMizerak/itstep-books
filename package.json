@@ -7,16 +7,36 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@grapecity/wijmo.vue2.all": "^5.20222.877",
+    "buefy": "^0.9.23",
     "core-js": "^3.8.3",
+    "inputmask": "^5.0.8",
+    "jquery": "^3.7.0",
+    "maska": "^2.1.7",
+    "transliteration": "^2.3.5",
+    "v-mask": "^2.3.0",
     "vue": "^3.2.13",
+    "vue-carousel": "^0.18.0",
+    "vue-js-modal": "^2.0.1",
+    "vue-masked-input": "^0.5.2",
     "vue-router": "^4.0.3",
+    "vue-step-progress": "^1.0.2",
+    "vue3-carousel": "^0.2.16",
+    "vuejs-paginate": "^2.1.0",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "node-sass": "^8.0.0",
+    "sass-loader": "^13.2.2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   },
   "browserslist": [
     "> 1%",
