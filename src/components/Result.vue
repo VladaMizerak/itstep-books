@@ -21,7 +21,7 @@
             <carousel :items-to-show="1" class="bookslides">
                 <slide v-for="book in booksresult" :key="book.id" class="container" id="books">
                     <div>
-                        <img src="./img/book1.png">
+                        <img :src="book.img">
                     </div>
                     <div class="bookinfo">
                         <div>

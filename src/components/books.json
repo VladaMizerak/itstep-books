@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "1984",
-      "img": ".img/book1.png",
+      "img": "./src/components/img/book1.png",
       "author": "Джордж Орвелл",
       "category": "Драма",
       "language": "Українська",
