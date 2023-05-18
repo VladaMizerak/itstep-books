@@ -30,7 +30,7 @@
           <input type="text" class="form-control" placeholder="Стівен Кінг...">
         </label>
       </div>-->
-      
+
     </div>
     <div class="buttons">
       <button @click="prevStep"><img src="./img/prev.svg"></button>

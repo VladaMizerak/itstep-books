@@ -58,7 +58,7 @@
             <carousel :items-to-show="3.5" class="mainslides">
                 <slide v-for="book in books" :key="book.id">
                   <div class="itembook">
-                    <img class="bookimage" src="./img/book1.png">
+                    <img class="bookimage" src="./img/book1_v1.png">
                     <div class="bookname">
                         <span>{{book.name}}</span>
                     </div>

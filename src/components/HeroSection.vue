@@ -9,7 +9,7 @@
                     </div>
 
                     <button class="findyourbook" type="button" @click="confirmInput">Знайди свою книгу</button>
-                
+
                     <h1 class="addtext">Наша платформа підбере для тебе книгу в три кліки </h1>
                 </div>
                 <div class="col-7">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <div class="container-fluid" id="quote">
         <div class="symbol">"</div>
         <div class="quotes">Якщо ти не любиш читати, означає, що ти ще не знайшов потрібну книгу.</div>
@@ -26,13 +26,13 @@
 </template>
 
 <script>
-  export default{
+export default {
     name: 'HeroSection',
-    methods:{
-    confirmInput(){
-      this.$router.push("/search/step1");
-      }
+    methods: {
+        confirmInput() {
+            this.$router.push("/search/step1");
+        }
     }
-  }
+}
 
 </script>

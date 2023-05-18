@@ -21,7 +21,7 @@
             <carousel :items-to-show="1" class="bookslides">
                 <slide v-for="book in booksresult" :key="book.id" class="container" id="books">
                     <div>
-                        <img :src="book.img">
+                        <img src="./img/book1_v1.png">
                     </div>
                     <div class="bookinfo">
                         <div>
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <p> {{ book.description }}</p>
-                            <p> {{ book.pages }}</p>
+                            <p> {{ book.pages }} сторінок</p>
                             <button class="buy" @click="redirectToBookstore(book)">Купити</button>
                         </div>
 

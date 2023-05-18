@@ -17,9 +17,9 @@
       <div class="col-9">
         <div class="grid-container" id="bookslist">
           <div v-for="book in filteredBooks" :key="book.id">
-            <img class="bookimage" src="./img/book1.png">
-            <div class="bookname">
-              <span>{{ book.name }}</span>
+            <img class="bookimage" src="./img/book1_v1.png" @click="redirectToBookstore(book)">
+            <div class="bookname" >
+              <span @click="redirectToBookstore(book)">{{ book.name }}</span>
             </div>
             <div class="bookauthor">
               <span>{{ book.author }}</span>
@@ -48,38 +48,30 @@
     </div>
   </div>
   <calltoaction></calltoaction>
-
-  <div>
-  </div>
 </template>
   
   
 <script>
 import booksData from "./books.json";
+import category from "./categories.json"
 
 export default {
   name: 'Books',
   data() {
     return {
       books: booksData,
-      searchQuery: '',
-      categories: [
-        { id: 1, name: "Драма" },
-        { id: 2, name: "Жахи" },
-        { id: 3, name: "Психологія" },
-        { id: 4, name: "Комедія" },
-        { id: 5, name: "Українська література" },
-        { id: 6, name: "Філософія" },
-        { id: 7, name: "Історія" },
-        { id: 8, name: "Біографія" },
-        { id: 9, name: "Сучасна література" },
-      ],
+      categories: category,
       selectedCategory: [],
     }
   },
   methods: {
     confirmInput() {
       this.$router.push("/search/step1");
+    },
+    redirectToBookstore(book) {
+            const searchQueryName = book.name.replace(/ /g, '+');
+            const bookstoreUrl = `https://www.yakaboo.ua/ua/search?q=${searchQueryName}&for_filter_is_in_stock=Tovary_v_nalichii`;
+            window.open(bookstoreUrl, '_blank');
     }
   },
   computed: {

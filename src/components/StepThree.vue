@@ -30,14 +30,13 @@
           Без наявності будь-яких даних, ми не можемо скласти перелік книг.
         </div>
       </div>
-  
+
     </div>
     <div class="buttons">
       <button @click="prevStep"><img src="./img/prev.svg"></button>
       <button @click="submitForm"><img src="./img/next.svg"></button>
     </div>
   </div>
-
 </template>
 
 <script >
@@ -47,9 +46,9 @@ import books from "./books.json";
 import VModal from 'vue-js-modal';
 
 export default {
-  
+
   name: 'StepThree',
-  components:{
+  components: {
     VModal,
   },
   data() {
@@ -65,7 +64,7 @@ export default {
   },
 
   methods: {
-  
+
     prevStep() {
       if (this.currentStep > 1) {
         this.currentStep--;
@@ -76,8 +75,8 @@ export default {
     submitForm() {
 
       if (!this.stepsData.step1Selection && !this.stepsData.step2Selection && !this.stepsData.step3Selection) {
-        this.showError = true; 
-        return; 
+        this.showError = true;
+        return;
       }
       console.log("Form submitted!");
 
@@ -114,7 +113,7 @@ export default {
     closePopup() {
       this.$modal.hide('popup');
     },
-    
+
 
   }
 }
