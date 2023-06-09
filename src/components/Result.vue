@@ -18,10 +18,10 @@
                     </div>
                 </div>
             </div>
-            <carousel :items-to-show="1" class="bookslides">
+            <carousel  v-if="booksresult.length > 0" :items-to-show="1" class="bookslides">
                 <slide v-for="book in booksresult" :key="book.id" class="container" id="books">
                     <div>
-                        <img src="./img/book1_v1.png">
+                        <img :src="`/img/${book.img}`">
                     </div>
                     <div class="bookinfo">
                         <div>
@@ -30,15 +30,23 @@
                         </div>
                         <div>
                             <p> {{ book.description }}</p>
+                            <div class="rating">
+                                <span v-for="n in 5" :key="n" :class="{ filled: n <= book.rate }">&#9733;</span>
+                            </div>
                             <p> {{ book.pages }} сторінок</p>
+
                             <button class="buy" @click="redirectToBookstore(book)">Купити</button>
                         </div>
+
 
                     </div>
                 </slide>
             </carousel>
+            <div v-else class="no-books-message">
+                <p>Вибачте, схоже наразі немає книги згідно ваших вподобань.</p>
+            </div>
             <div class="buttons">
-                <button @click="prevStep"><img src="./img/prev.svg"></button>
+                <button @click="prevStep"><img src="/img/prev.svg"></button>
             </div>
         </div>
 
@@ -60,6 +68,7 @@ export default {
         return {
             currentStep: 4,
             totalSteps: 4,
+            booksresult: [],
         };
     },
     mounted() {
@@ -103,4 +112,5 @@ export default {
     },
 };
 </script>
+  
   

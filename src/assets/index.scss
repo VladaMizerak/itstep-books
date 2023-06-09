@@ -56,9 +56,23 @@ body {
 }
 
 .search {
-    width: 40px;
-    height: 40px;
-    margin-top: 38px;
+    background-color: transparent;
+    border-color: transparent;
+    img{
+        width: 40px;
+        height: 40px;
+        margin-right: 25px;
+    
+    }
+}
+.auth{
+    background-color: transparent;
+    border-color: transparent;
+    img{
+        width: 35px;
+        height: 35px;
+        margin-left: 20px;
+    }
 }
 
 /*HEROSECTION*/
@@ -152,11 +166,11 @@ body {
 }
 
 .books3 {
-    padding-top: 150px;
+    padding-top: 100px;
 }
 
 .block1 {
-    padding-top: 125px;
+    padding-top: 75px;
 }
 
 .block2 {
@@ -214,6 +228,7 @@ body {
     color: white;
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .text3 {
@@ -477,6 +492,7 @@ body {
             grid-template-rows: auto auto;
             gap: 10px;
             padding: 10px;
+            margin-bottom: 50px;
 
             button {
                 display: flex;
@@ -600,3 +616,167 @@ body {
     margin-top: 10px;
   }
 
+.no-books-message{
+    font-size: 25px;
+    font-weight: bold;
+    color: #2A4264;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 90px;
+}
+
+.rating {
+    display: inline-block;
+  }
+  
+  .rating span {
+    color: #666;
+  }
+  
+  .rating span.filled {
+    color: #FF7C2A;
+  }
+  
+  .rating-number {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: bold;
+  }
+
+.pagination{
+    justify-content: center;
+    button{
+        width: 40px;
+        height: 40px;
+        border-radius: 30px;
+        border: #2A4264 solid 1px;
+        background-color: transparent;
+        margin: 10px;
+        
+    }
+}
+
+
+/*AUTH*/
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 500px;
+    height: max-content;
+  }
+  
+  .close-button {
+    margin-left: 430px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #FF7C2A;
+    font-weight: bolder;
+  }
+  
+  .auth-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #FF7C2A;
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        button{
+            color: #2A4264;
+            border: #2A4264 solid 3px;
+            background-color: transparent;
+            height: 47px;
+            width: fit-content;
+            padding: 1px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            &:hover {
+                background-color: #2A4264;
+                color: white;
+                border: 0px;
+            }
+        }
+
+    }
+  }
+
+.auth-label {
+    margin-bottom: 30px;
+    border-color: transparent;
+    border-bottom-color: #2A4264;
+    background-color: transparent;
+    width: 300px;
+}
+
+.auth-label:focus {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom-color: #2A4264;
+    color: #2A4264;
+}
+
+.auth-control {
+    font-size: 15px;
+    color: #2A4264;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.logout-confirmation {
+    font-size: 16px;
+    margin-top: 40px;
+    align-items: center;
+    .logout-confirmation-buttons{
+        display: flex;
+        justify-content: space-between;
+        button{
+            color: #2A4264;
+            border: #2A4264 solid 3px;
+            background-color: transparent;
+            height: 47px;
+            width: fit-content;
+            padding: 1px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 40px;
+            &:hover {
+                background-color: #2A4264;
+                color: white;
+                border: 0px;
+            }
+        }
+    }
+  }
+
+  .switch-message{
+    width: 300px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+  }

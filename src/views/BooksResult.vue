@@ -4,7 +4,6 @@
         <Result/>
         <Footer/>
     </div>
-
 </template>
 
 <script>
@@ -12,13 +11,9 @@
     import Result from "@/components/Result.vue";
     import Footer from "@/components/Footer.vue";
 
-
     export default{
         name: 'BooksResult',
-        components:{
-            Header,
-            Result,
-            Footer
-        },
+        components:{Header, Result, Footer},
     }
 </script>
+

@@ -1,5 +1,12 @@
 [
-    {"step1Selection": ""},
-    {"step2Selection": ""},
-    {"step3Selection": ""}
-]
+    {
+      "step1Selection": []
+    },
+    {
+      "step2Selection": []
+    },
+    {
+      "step3Selection": []
+    }
+  ]
+  

@@ -12,25 +12,27 @@
             <label :for="category.id">{{ category.name }}</label>
           </div>
         </div>
-
       </div>
       <div class="col-9">
         <div class="grid-container" id="bookslist">
-          <div v-for="book in filteredBooks" :key="book.id">
-            <img class="bookimage" src="./img/book1_v1.png" @click="redirectToBookstore(book)">
-            <div class="bookname" >
+          <div v-for="book in paginatedBooks" :key="book.id">
+            <img class="bookimage" :src="`/img/${book.img}`" @click="redirectToBookstore(book)">
+            <div class="bookname">
               <span @click="redirectToBookstore(book)">{{ book.name }}</span>
             </div>
             <div class="bookauthor">
               <span>{{ book.author }}</span>
             </div>
-            <button class="bookbutton"> Знайти схоже</button>
+            <button class="bookbutton" @click="findSimilarBooks(book)">Знайти схоже</button>
           </div>
         </div>
+        <div class="pagination">
+          <button v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)">
+            {{ pageNumber }}
+          </button>
+        </div>
       </div>
-
     </div>
-
   </div>
 
   <div class="container-fluid" id="calltoaction">
@@ -47,21 +49,28 @@
       </div>
     </div>
   </div>
-  <calltoaction></calltoaction>
 </template>
   
   
 <script>
-import booksData from "./books.json";
-import category from "./categories.json"
+import { db } from "@/firebase/init.js";
+import { collection, getDocs } from 'firebase/firestore';
+
+
+
 
 export default {
   name: 'Books',
   data() {
     return {
-      books: booksData,
-      categories: category,
+      books: [],
+      categories: [],
       selectedCategory: [],
+
+      pagination: {
+        currentPage: 1,
+        perPage: 6,
+      },
     }
   },
   methods: {
@@ -69,10 +78,37 @@ export default {
       this.$router.push("/search/step1");
     },
     redirectToBookstore(book) {
-            const searchQueryName = book.name.replace(/ /g, '+');
-            const bookstoreUrl = `https://www.yakaboo.ua/ua/search?q=${searchQueryName}&for_filter_is_in_stock=Tovary_v_nalichii`;
-            window.open(bookstoreUrl, '_blank');
-    }
+      const searchQueryName = book.name.replace(/ /g, '+');
+      const bookstoreUrl = `https://www.yakaboo.ua/ua/search?q=${searchQueryName}&for_filter_is_in_stock=Tovary_v_nalichii`;
+      window.open(bookstoreUrl, '_blank');
+    },
+    async getData() {
+      const querySnapshotBooks = await getDocs(collection(db, 'books'));
+      const querySnapshotCategories = await getDocs(collection(db, 'stepOneCategories'));
+      querySnapshotBooks.forEach((doc) => {
+        this.books.push(doc.data());
+      });
+      querySnapshotCategories.forEach((doc) => {
+        this.categories.push(doc.data());
+      })
+    },
+
+    findSimilarBooks(book) {
+
+      let result = this.books.filter(b => b.category === book.category);
+
+      if (result.length === 0) {
+        this.$router.push({ name: "Result" });
+        return;
+      }
+
+      this.$router.push({ name: "Result", query: { booksresult: JSON.stringify(result) } });
+    },
+    goToPage(pageNumber) {
+      if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+        this.pagination.currentPage = pageNumber;
+      }
+    },
   },
   computed: {
     filteredBooks() {
@@ -88,7 +124,19 @@ export default {
       return filtered;
 
     },
-  },
-}
+    paginatedBooks() {
+      const start = (this.pagination.currentPage - 1) * this.pagination.perPage;
+      const end = start + this.pagination.perPage;
+      return this.filteredBooks.slice(start, end);
+    },
+    totalPages() {
+      return Math.ceil(this.filteredBooks.length / this.pagination.perPage);
+    },
 
+  },
+  mounted() {
+    this.getData();
+  },
+
+}
 </script>

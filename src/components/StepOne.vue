@@ -16,31 +16,29 @@
             </div>
         </div>
 
-        <div v-show="currentStep === 1" class="stepblock">
+        <div class="stepblock">
             <h2>Який жанр тобі б хотілось прочитати сьогодні?</h2>
             <h4>обери свої улюблені жанри</h4>
             <div class="stepsdata">
                 <button v-for="category in categorylist" :key="category.id"
-                    :class="{ active: stepsData.step1Selection === category }"
-                    @click="stepsData.step1Selection = category">{{ category.name }}</button>
+                    :class="{ active: isCategorySelected(category) }" @click="toggleCategorySelection(category)">
+                    {{ category.name }}
+                </button>
             </div>
-            <!--<div class="inputblock">
-                <h4>або напиши його самостійно</h4>
-                <label>
-                    <input type="text" class="form-control" placeholder="Психологія...">
-                </label> 
-            </div>-->
+            <h4>або напиши його самостійно</h4>
+            <input type="text" class="form-control" v-model="userInput" placeholder="Драма...">
 
         </div>
         <div class="buttons">
-            <button @click="prevStep"><img src="./img/prev.svg"></button>
-            <button @click="nextStep"><img src="./img/next.svg"></button>
+            <button @click="prevStep"><img src="/img/prev.svg"></button>
+            <button @click="nextStep"><img src="/img/next.svg"></button>
         </div>
     </div>
 </template>
-
+    
 <script>
-import categories from "./categories.json";
+import { db } from "@/firebase/init.js";
+import { collection, getDocs } from 'firebase/firestore';
 import stepsData from "./stepsData.json";
 
 export default {
@@ -49,13 +47,20 @@ export default {
         return {
             currentStep: 1,
             totalSteps: 4,
-            categorylist: categories,
+            categorylist: [],
             stepsData: stepsData,
+            userInput: "",
         };
     },
     methods: {
         nextStep() {
             if (this.currentStep < this.totalSteps) {
+                const selectedCategories = this.categorylist.filter(category => category.selected);
+                if (this.userInput.trim() !== "") {
+                    selectedCategories.push({ name: this.formatInput(this.userInput.trim()) });
+                }
+                console.log("Selected Categories:", selectedCategories);
+                this.stepsData.step1Selection = selectedCategories;
                 this.currentStep++;
                 this.$router.push("/search/step2");
             }
@@ -63,33 +68,53 @@ export default {
         prevStep() {
             this.$router.go(-1);
         },
+        async getData() {
+            const querySnapshot = await getDocs(collection(db, 'stepOneCategories'));
+            querySnapshot.forEach((doc) => {
+                const category = doc.data();
+                category.selected = false; 
+                this.categorylist.push(category);
+            });
+        },
+        toggleCategorySelection(category) {
+            category.selected = !category.selected;
+        },
+        isCategorySelected(category) {
+            return category.selected;
+        },
         goToStep(step) {
             this.currentStep = step;
             switch (step) {
                 case 1:
-                    window.location.href = '/search/step1';
+                    this.$router.push("/search/step1");
                     break;
                 case 2:
-                    window.location.href = '/search/step2';
+                    this.$router.push("/search/step2");
                     break;
                 case 3:
-                    window.location.href = '/search/step3';
+                    this.$router.push("/search/step3");
                     break;
                 case 4:
-                    window.location.href = '/search/result';
+                    this.$router.push("/search/result");
                     break;
                 default:
                     break;
             }
-        }
+        },
+        formatInput(input) {
+            return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+        },
     },
-
-}
+    async mounted() {
+        await this.getData();
+    },
+};
 </script>
-
-
-
-
+    
+  
+  
+  
+  
 
 
 

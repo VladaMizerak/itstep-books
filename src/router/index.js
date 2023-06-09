@@ -1,10 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from '../views/Home.vue'
-import Catalog from '../views/Catalog.vue'
-import StepOne from '../views/SearchStepOne.vue'
-import StepTwo from '../views/SearchStepTwo.vue'
-import StepThree from '../views/SearchStepThree.vue'
-import BooksResult from '../views/BooksResult.vue'
+import Home from '../views/Home.vue';
+import Catalog from '../views/Catalog.vue';
+import StepOne from '../views/SearchStepOne.vue';
+import StepTwo from '../views/SearchStepTwo.vue';
+import StepThree from '../views/SearchStepThree.vue';
+import BooksResult from '../views/BooksResult.vue';
+import { auth } from "@/firebase/init.js";
+
+const requireAuth = (to, from, next) => {
+    console.log('Destination:', to.name);
+    const user = auth.currentUser;
+    console.log('User:', user);
+    if (to.name === 'StepOne' && !user) {
+        console.log('Redirecting to Home');
+        next({ name: 'Home' });
+    } else {
+        console.log('Allowing access');
+        next();
+    }
+};
 
 
 const routes = [
@@ -21,7 +35,8 @@ const routes = [
     {
         path: '/search/step1',
         name: 'StepOne',
-        component: StepOne
+        component: StepOne,
+        beforeEnter: requireAuth
     },
     {
         path: '/search/step2',
@@ -36,13 +51,13 @@ const routes = [
     {
         path: '/search/result',
         name: 'Result',
-        component: BooksResult
+        component: BooksResult,
     }
-]
+];
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
-})
+});
 
-export default router
+export default router;
