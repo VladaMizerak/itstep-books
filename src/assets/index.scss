@@ -58,17 +58,20 @@ body {
 .search {
     background-color: transparent;
     border-color: transparent;
-    img{
+
+    img {
         width: 40px;
         height: 40px;
-        margin-right: 25px;
-    
+        margin-left: 25px;
+
     }
 }
-.auth{
+
+.auth {
     background-color: transparent;
     border-color: transparent;
-    img{
+
+    img {
         width: 35px;
         height: 35px;
         margin-left: 20px;
@@ -318,7 +321,7 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    
+
 }
 
 .footer-brand {
@@ -355,7 +358,6 @@ body {
         color: #FF7C2A;
     }
 }
-
 
 /*CATALOG*/
 #catalog {
@@ -439,6 +441,7 @@ body {
 /*STEPS*/
 #stepstitle {
     margin-top: 70px;
+
     h6 {
         font-size: 16px;
         margin-bottom: 80px;
@@ -515,7 +518,8 @@ body {
                 }
             }
         }
-        .inputblock{
+
+        .inputblock {
             margin-top: 80px;
         }
 
@@ -572,7 +576,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-            
+
     img {
         height: 370px;
     }
@@ -591,11 +595,11 @@ body {
     }
 }
 
-.bookslides{
+.bookslides {
     text-align: start;
 }
 
-.buy{
+.buy {
     color: #2A4264;
     border: #2A4264 solid 3px;
     background-color: transparent;
@@ -604,19 +608,21 @@ body {
     border-radius: 30px;
     font-size: 16px;
     font-weight: bold;
+
     &:hover {
         background-color: #2A4264;
         color: white;
         border: 0px;
     }
 }
+
 .error-message {
     color: red;
     font-weight: bold;
     margin-top: 10px;
-  }
+}
 
-.no-books-message{
+.no-books-message {
     font-size: 25px;
     font-weight: bold;
     color: #2A4264;
@@ -627,32 +633,33 @@ body {
 
 .rating {
     display: inline-block;
-  }
-  
-  .rating span {
+}
+
+.rating span {
     color: #666;
-  }
-  
-  .rating span.filled {
+}
+
+.rating span.filled {
     color: #FF7C2A;
-  }
-  
-  .rating-number {
+}
+
+.rating-number {
     margin-left: 5px;
     color: #666666;
     font-weight: bold;
-  }
+}
 
-.pagination{
+.pagination {
     justify-content: center;
-    button{
+
+    button {
         width: 40px;
         height: 40px;
         border-radius: 30px;
         border: #2A4264 solid 1px;
         background-color: transparent;
         margin: 10px;
-        
+
     }
 }
 
@@ -669,8 +676,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .modal-content-logout{
+}
+
+.modal-content-logout {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -678,30 +686,32 @@ body {
     border-radius: 5px;
     width: 500px;
     height: max-content;
-  }
-  
-  .close-button {
+}
+
+.close-button {
     margin-left: 430px;
     font-size: 25px;
     cursor: pointer;
     color: #FF7C2A;
     font-weight: bolder;
-  }
-  
-  .auth-content{
+}
+
+.auth-content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: #FF7C2A;
-    div{
+
+    div {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin-top: 40px;
         margin-bottom: 10px;
-        button{
+
+        button {
             color: #2A4264;
             border: #2A4264 solid 3px;
             background-color: transparent;
@@ -712,6 +722,7 @@ body {
             font-size: 18px;
             font-weight: bold;
             margin-top: 30px;
+
             &:hover {
                 background-color: #2A4264;
                 color: white;
@@ -720,7 +731,7 @@ body {
         }
 
     }
-  }
+}
 
 .auth-label {
     margin-bottom: 30px;
@@ -748,10 +759,12 @@ body {
     font-size: 16px;
     margin-top: 40px;
     align-items: center;
-    .logout-confirmation-buttons{
+
+    .logout-confirmation-buttons {
         display: flex;
         justify-content: space-between;
-        button{
+
+        button {
             color: #2A4264;
             border: #2A4264 solid 3px;
             background-color: transparent;
@@ -763,6 +776,7 @@ body {
             font-weight: bold;
             margin-top: 15px;
             margin-bottom: 40px;
+
             &:hover {
                 background-color: #2A4264;
                 color: white;
@@ -770,13 +784,173 @@ body {
             }
         }
     }
-  }
+}
 
-  .switch-message{
+.switch-message {
     width: 300px;
     margin-top: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
-  }
+}
+
+
+@media (max-width: 600px) {
+
+    .books2,
+    .books3,
+    .text,
+    .addtext,
+    .line3 {
+        width: 100%;
+        height: auto;
+    }
+
+    #step-progress {
+        justify-items: start;
+        margin-bottom: 15px;
+
+        .stepblock {
+
+            width: 100%;
+            height: auto;
+
+            .stepsdata {
+                grid-template-columns: none;
+            }
+        }
+
+        .steps {
+            width: 390px;
+        }
+    }
+
+    .buttons {
+        margin-bottom: 50px;
+    }
+
+    #books {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        img {
+            margin-left: 20px;
+        }
+    }
+
+    #contacts {
+        height: auto;
+        margin-bottom: 60px;
+    }
+
+    #contactform {
+        margin-top: 100px;
+    }
+
+    .maintext {
+        width: 100%;
+        font-size: 100px;
+    }
+
+    #calltoaction {
+        height: 300px;
+    }
+
+    .booksearch2 {
+        margin-top: 50px;
+    }
+
+    .mainslides {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+
+        .carousel-item {
+            flex: 0 0 calc(100% / 1.5);
+            scroll-snap-align: start;
+        }
+    }
+
+    .submit {
+        margin-left: 0px;
+    }
+
+
+    .navbar-collapse {
+        background-color: white;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-toggler {
+        &:focus {
+            box-shadow: none;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+
+    }
+
+    .navbar-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .nav-item {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar {
+        justify-content: flex-end;
+    }
+
+    .navbar-brand {
+        border-right: none;
+        padding-right: 170px;
+
+    }
+
+    #catalog {
+        height: auto;
+        margin-bottom: 50px;
+    }
+
+    .grid-container {
+        grid-template-columns: auto auto;
+
+        .bookimage {
+            width: 180px;
+            height: 260px;
+        }
+    }
+
+    .modal{
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .modal-content-logout{
+        margin-top: 25%;
+        width: 415px;
+    }
+    .close-button{
+        margin-left: 370px;
+    }
+
+
+
+
+}

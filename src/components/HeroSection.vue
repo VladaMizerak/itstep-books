@@ -1,35 +1,38 @@
 <template>
-    <div class="herosection">
-      <div class="container">
-        <div class="row">
-          <div class="col-5">
-            <div class="maininfo">
-              <h6 class="bestchoice">НАЙКРАЩИЙ ВИБІР</h6>
-              <h1 class="maintext">BOOKS FOR ALL</h1>
-            </div>
-  
-            <button class="findyourbook" type="button" @click="handleSearchClick">Знайди свою книгу</button>
-  
-            <h1 class="addtext">Наша платформа підбере для тебе книгу в три кліки</h1>
+  <div class="herosection">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-sm-12">
+          <div class="maininfo">
+            <h6 class="bestchoice">НАЙКРАЩИЙ ВИБІР</h6>
+            <h1 class="maintext">BOOKS FOR ALL</h1>
           </div>
-          <div class="col-7">
-            <img class="books" src="/img/books.svg">
-          </div>
+
+          <button class="findyourbook" type="button" @click="handleSearchClick">Знайди свою книгу</button>
+
+          <h1 class="addtext">Наша платформа підбере для тебе книгу в три кліки</h1>
+        </div>
+        <div class="col-lg-7 d-none d-lg-block">
+          <img class="books" src="/img/books.svg">
         </div>
       </div>
     </div>
-    <div class="container-fluid" id="quote">
-      <div class="symbol">"</div>
-      <div class="quotes">Якщо ти не любиш читати, означає, що ти ще не знайшов потрібну книгу.</div>
-      <div class="author">Дж. К. Роулінг</div>
+  </div>
+  <div class="container-fluid" id="quote">
+    <div class="symbol">"</div>
+    <div class="quotes">Якщо ти не любиш читати, означає, що ти ще не знайшов потрібну книгу.</div>
+    <div class="author">Дж. К. Роулінг</div>
+  </div>
+
+  <div v-if="showAuthPopup" class="modal">
+    <div class="modal-content-logout">
+      <auth-user @close="closePopup" />
     </div>
-  
-    <div v-if="showAuthPopup" class="modal">
-      <div class="modal-content-logout">
-        <auth-user @close="closePopup" />
-      </div>
-    </div>
-  </template>
+  </div>
+</template>
+
+
+
   
   <script>
   import AuthUser from './AuthUser.vue';

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-5" id="stepstitle">
+      <div class="col-lg-5 col-sm-12" id="stepstitle">
         <h3 class="title">РОЗКАЖИ НАМ ПРО СВОЇ ІНТЕРЕСИ</h3>
         <h6>слідуй <strong>3 </strong>прості кроки та отримай перелік книжкових пропозицій</h6>
       </div>

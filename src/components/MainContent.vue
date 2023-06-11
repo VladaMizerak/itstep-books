@@ -3,10 +3,10 @@
   <div class="maincontent">
     <div class="container" id="about-us">
       <div class="row">
-        <div class="col-7">
+        <div class="col-lg-7 col-sm-12">
           <img class="books2" src="/img/books(3).svg">
         </div>
-        <div class="col-5">
+        <div class="col-lg-5 col-sm-12">
           <div class="block1">
             <h3 class="title">ХТО МИ?</h3>
             <h1 class="text">якщо ти не знаєш, що прочитати сьогодні, наша платформа допоможе тобі
@@ -48,53 +48,50 @@
     </div>
     <div class="container" id="suggestion">
       <div class="row">
-        <div class="col-10">
+        <div class="col-lg-10 col-sm-12">
           <h1 class="title2">НАШІ ПРОПОЗИЦІЇ</h1>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-sm-12">
           <a href="/catalog">переглянути більше ></a>
         </div>
       </div>
 
-      <carousel :items-to-show="3.5" class="mainslides">
-        <slide v-for="book in books" :key="book.id">
-          <div class="itembook">
-            <img class="bookimage" :src="`/img/${book.img}`">
-            <div class="bookname">
-              <span>{{ book.name }}</span>
-            </div>
-            <div class="bookauthor">
-              <span>{{ book.author }}</span>
-            </div>
-            <button class="bookbutton" @click="findSimilarBooks(book)"> Знайти схоже</button>
+      <carousel :items-to-show="getItemsToShow()" class="mainslides">
+      <slide v-for="book in books" :key="book.id">
+        <div class="itembook">
+          <img class="bookimage" :src="`/img/${book.img}`">
+          <div class="bookname">
+            <span>{{ book.name }}</span>
           </div>
-        </slide>
-      </carousel>
+          <div class="bookauthor">
+            <span>{{ book.author }}</span>
+          </div>
+          <button class="bookbutton" @click="findSimilarBooks(book)"> Знайти схоже</button>
+        </div>
+      </slide>
+    </carousel>
+
     </div>
     <div class="container-fluid" id="calltoaction">
       <div class="container">
         <div class="row">
-          <div class="col-10">
-            <div class="text3">Не знайшов нічого цікавого для тебе?</div>
+          <div class="col-lg-10 col-sm-12">
+            <div class="text3">Не знайшов нічого цікавого для cебе?</div>
             <div class="text4">ми можемо допомогти</div>
           </div>
-          <div class="col-2">
+          <div class="col-lg-2 col-sm-12">
             <button class="booksearch2" type="button" @click="confirmInput">Знайди свою книгу</button>
           </div>
-          
-
         </div>
-
-
       </div>
 
     </div>
     <div class="container" id="cooperation">
       <div class="row">
-        <div class="col-7">
+        <div class="col-lg-7 col-sm-12">
           <img class="books3" src="/img/books(2).svg">
         </div>
-        <div class="col-5">
+        <div class="col-lg-5 col-sm-12">
           <div class="block1">
             <h3 class="title">ЯКЩО ТИ ВЛАСНИК КНИЖКОВОГО МАГАЗИНУ</h3>
             <h1 class="text">ти можеш долучитись до нашої команди та ділитись своїм асортиментом з читачами.
@@ -136,7 +133,7 @@
     </div>
     <div class="container" id="contacts">
       <div class="row">
-        <div class="col-7">
+        <div class="col-lg-7 col-sm-12">
           <div class="block1">
             <h3 class="title">СКОНТАКТУЙ!</h3>
             <h1 class="text">якщо виникли питання, то залиш, будь ласка, нам своє повідомлення і наш менеджер зв'яжеться з
@@ -147,13 +144,14 @@
           <a href="#"><img class="socialmedia" src="/img/facebook.png"></a>
           <a href="#"><img class="socialmedia" src="/img/instagram.png"></a>
         </div>
-        <div class="col-5" id="contactform">
+
+        <div class="col-lg-5 col-sm-12" id="contactform">
           <div class="row">
-            <div class="col">
+            <div class="col-lg-6 col-sm-12">
               <label class="form-label">Ім'я або назва компанії *</label>
               <input type="text" class="form-control" required v-model="nameOrCompany">
             </div>
-            <div class="col">
+            <div class="col-lg-6 col-sm-12">
               <label class="form-label">Номер телефону *</label>
               <input type="tel" class="form-control" required v-model="phoneNumber">
             </div>
@@ -241,6 +239,13 @@ export default {
         .catch((error) => {
           console.error('Error saving contact form data:', error);
         });
+    },
+    getItemsToShow() {
+      if (window.innerWidth < 576) {
+        return 1.25;
+      } else {
+        return 3.5;
+      }
     },
 
 

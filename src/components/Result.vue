@@ -1,7 +1,7 @@
 <template>
     <div class="container" id="stepstitle">
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 col-sm-12">
                 <div>
                     <h3 class="title">ТУТ ДЕКІЛЬКА КНИЖОК, ЯКІ МОЖУТЬ БУТИ ТОБІ ЦІКАВІ!</h3>
                     <h6>ти можеш обрати будь-яку та придбати її в книжковому інтернет-магазині з хорошою знижою,

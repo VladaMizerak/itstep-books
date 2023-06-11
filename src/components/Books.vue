@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="catalog">
     <div class="row">
-      <div class="col-3">
+      <div class="col-lg-3 col-sm-12">
         <div>
           <h3 class="title">СПИСОК КНИГ</h3>
         </div>
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-lg-9 col-sm-12">
         <div class="grid-container" id="bookslist">
           <div v-for="book in paginatedBooks" :key="book.id">
             <img class="bookimage" :src="`/img/${book.img}`" @click="redirectToBookstore(book)">
@@ -36,19 +36,19 @@
   </div>
 
   <div class="container-fluid" id="calltoaction">
-    <div class="container">
-      <div class="row">
-        <div class="col-10">
-          <div class="text3">Не знайшов нічого цікавого для тебе?</div>
-          <div class="text4">ми можемо допомогти</div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-sm-12">
+            <div class="text3">Не знайшов нічого цікавого для cебе?</div>
+            <div class="text4">ми можемо допомогти</div>
+          </div>
+          <div class="col-lg-2 col-sm-12">
+            <button class="booksearch2" type="button" @click="confirmInput">Знайди свою книгу</button>
+          </div>
         </div>
-        <div class="col-2">
-          <button class="booksearch2" type="button" @click="confirmInput">Знайди свою книгу</button>
-        </div>
-
       </div>
+
     </div>
-  </div>
 </template>
   
   
