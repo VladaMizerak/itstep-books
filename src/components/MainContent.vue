@@ -57,19 +57,19 @@
       </div>
 
       <carousel :items-to-show="getItemsToShow()" class="mainslides">
-      <slide v-for="book in books" :key="book.id">
-        <div class="itembook">
-          <img class="bookimage" :src="`/img/${book.img}`">
-          <div class="bookname">
-            <span>{{ book.name }}</span>
+        <slide v-for="book in books" :key="book.id">
+          <div class="itembook">
+            <img class="bookimage" :src="`/img/${book.img}`">
+            <div class="bookname">
+              <span>{{ book.name }}</span>
+            </div>
+            <div class="bookauthor">
+              <span>{{ book.author }}</span>
+            </div>
+            <button class="bookbutton" @click="findSimilarBooks(book)"> Знайти схоже</button>
           </div>
-          <div class="bookauthor">
-            <span>{{ book.author }}</span>
-          </div>
-          <button class="bookbutton" @click="findSimilarBooks(book)"> Знайти схоже</button>
-        </div>
-      </slide>
-    </carousel>
+        </slide>
+      </carousel>
 
     </div>
     <div class="container-fluid" id="calltoaction">
@@ -172,6 +172,7 @@ import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import bookList from './books.json'
 
 export default {
   name: 'MainContent',
@@ -188,6 +189,7 @@ export default {
       phoneNumber: '',
       comment: '',
       formError: false,
+
     }
   },
   methods: {
@@ -247,8 +249,6 @@ export default {
         return 3.5;
       }
     },
-
-
   },
   mounted() {
     this.getData();

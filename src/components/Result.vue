@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <carousel  v-if="booksresult.length > 0" :items-to-show="1" class="bookslides">
+            <carousel v-if="booksresult.length > 0" :items-to-show="1" class="bookslides">
                 <slide v-for="book in booksresult" :key="book.id" class="container" id="books">
                     <div>
                         <img :src="`/img/${book.img}`">
@@ -31,7 +31,7 @@
                         <div>
                             <p> {{ book.description }}</p>
                             <div class="rating">
-                                <span v-for="n in 5" :key="n" :class="{ filled: n <= book.rate }">&#9733;</span>
+                                <span v-for="n in 5" :key="n" :class="{ filled: n <= book.rating }">&#9733;</span>
                             </div>
                             <p> {{ book.pages }} сторінок</p>
 
@@ -55,6 +55,7 @@
   
 <script>
 import { Carousel, Slide } from 'vue3-carousel'
+
 
 
 export default {
@@ -86,8 +87,28 @@ export default {
             }
         },
         redirectToBookstore(book) {
-            const searchQueryName = book.name.replace(/ /g, '+');
-            const bookstoreUrl = `https://www.yakaboo.ua/ua/search?q=${searchQueryName}&for_filter_is_in_stock=Tovary_v_nalichii`;
+            const ukrainianToLatinMap = {
+                а: 'a', б: 'b', в: 'v', г: 'g', ґ: 'g', д: 'd', е: 'e', є: 'e', ж: 'zh', з: 'z',
+                и: 'i', і: 'i', ї: 'i', й: 'j', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p',
+                р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'kh', ц: 'c', ч: 'ch', ш: 'sh', щ: 'shch', ю: 'ju', я: 'ja',
+                1: '1', 9: '9', 8: '8', 4: '',
+            };
+            const words = book.name.toLowerCase().split(' ');
+            const latinName = words.map((word) => {
+                const cleanedWord = word.replace(/«|»/g, '');
+                return Array.from(cleanedWord, (char, index) => {
+                    if (char === 'ь') {
+                        if (index === cleanedWord.length - 1) {
+                            return '';
+                        } else {
+                            return '-';
+                        }
+                    }
+                    return ukrainianToLatinMap[char] || char;
+                }).join('');
+            }).join('-');
+            const searchQueryName = encodeURIComponent(latinName.toLowerCase()).replace(/%2C/g, '').replace(/%20/g, '-');
+            const bookstoreUrl = `https://www.yakaboo.ua/ua/${searchQueryName}.html`;
             window.open(bookstoreUrl, '_blank');
         },
         goToStep(step) {

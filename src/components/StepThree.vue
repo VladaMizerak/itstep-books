@@ -85,10 +85,11 @@ export default {
         return;
       }
 
-      console.log("Form submitted!");
-
       let filteredBooks = this.books;
-
+      
+      console.log("Form submitted!");
+      console.log("Filtered Books:", filteredBooks);
+      
       if (this.stepsData.step1Selection.length > 0) {
         filteredBooks = filteredBooks.filter(book =>
           this.stepsData.step1Selection.some(
@@ -112,7 +113,7 @@ export default {
       }
 
       filteredBooks = filteredBooks.filter(
-        book => book.rate >= 4 && book.rate <= 5
+        book => book.rating >= 4 && book.rating <= 5
       );
 
       if (filteredBooks.length === 0) {
@@ -120,7 +121,6 @@ export default {
         return;
       }
 
-      console.log("Filtered Books:", filteredBooks);
       console.log("stepsData:", this.stepsData);
 
       this.$router.push({ name: "Result", query: { booksresult: JSON.stringify(filteredBooks) } });
